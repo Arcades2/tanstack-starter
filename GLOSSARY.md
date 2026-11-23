@@ -17,3 +17,8 @@ _Avoid_: module (used for any unit of code), domain
 
 **Smart component**: a component that fetches the server data it displays itself, instead of receiving that data from its parent. The route that mounts it preloads that data.
 _Avoid_: container component
+
+**Permission**: the right to perform one action on one resource (for example, create a post). Code checks permissions, never roles.
+
+**Role**: a named set of permissions given to a user. The Starter ships two, user and admin; a role's content can change without touching the code that checks permissions.
+_Avoid_: group, profile

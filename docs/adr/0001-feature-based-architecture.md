@@ -1,5 +1,7 @@
 # Feature-based architecture with no shared folder
 
+Status: superseded by [ADR 0002](0002-layered-flat-layout.md).
+
 Derived app code is grouped by feature (`src/features/<name>/`), because grouping by layer scatters each subject across many folders. Past feature-based projects decayed because their `shared/` folder became a dumping ground for domain code that had no owner. So there is deliberately no `shared/` folder. Code outside features lives in three spaces, and each one admits only code that knows nothing about the domain: `ui/` (shadcn primitives and generic components), `lib/` (code that would make sense in any app) and `platform/` (infrastructure singletons and adapters: database client, mailer, env, background tasks). All domain code belongs to exactly one feature. A feature may import another, which is how aggregate features such as the app shell are built.
 
 ## Considered Options

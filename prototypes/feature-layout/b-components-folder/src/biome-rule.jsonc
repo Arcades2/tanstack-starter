@@ -1,0 +1,6 @@
+// Amended: root files AND components/ are importable; every other subfolder stays private.
+// Nothing marks which components are meant for outside use (smart) vs internal (dumb).
+// To verify: Biome's negated globs in `group` (gitignore-style "!").
+{ "noRestrictedImports": { "level": "error", "options": { "patterns": [
+  { "group": ["@/features/*/*/**", "!@/features/*/components/*"], "message": "Import a feature through its root files or components/ only." }
+] } } }

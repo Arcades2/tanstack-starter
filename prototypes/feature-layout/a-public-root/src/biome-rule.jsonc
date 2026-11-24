@@ -1,0 +1,4 @@
+// Unchanged from ADR 0001: only root files of a feature are importable.
+{ "noRestrictedImports": { "level": "error", "options": { "patterns": [
+  { "group": ["@/features/*/*/**"], "message": "Import a feature through its root files only." }
+] } } }

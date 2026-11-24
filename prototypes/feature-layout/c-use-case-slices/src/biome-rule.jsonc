@@ -1,0 +1,5 @@
+// Amended: subfolders are use-case slices (open list, named after the action),
+// files at depth 2 are importable, nothing deeper. No more closed list of folders.
+{ "noRestrictedImports": { "level": "error", "options": { "patterns": [
+  { "group": ["@/features/*/*/*/**"], "message": "Import a feature's root files or its slices' files only." }
+] } } }

@@ -1,6 +1,6 @@
 # Layered, flat layout with the feature in file names
 
-Supersedes [ADR 0001](0001-feature-based-architecture.md).
+Supersedes [ADR 0001](0001-feature-based-architecture.md). Amended by [ADR 0003](0003-domain-layer-auth-and-app-shell.md): `data/` is renamed `domain/`, and auth, middleware, emails and the app shell get their place.
 
 Derived app code is sorted by kind of code first. Inside each kind, files sit flat and the feature only shows in their names (`post-details.tsx`). The data layer is the one exception: it has a folder per feature (`data/posts/`), because a query almost always has an obvious main feature, while a component often has none. ADR 0001 gave each feature a folder with a public interface, so every file needed an owner. Screens routinely mix several features (a post with its comments, a patient with their samples and centre), and those had no right owner. The rules meant to protect the folders cost more thought than they saved. When no folder means ownership, a misplaced file breaks nothing and is fixed by renaming it.
 
@@ -39,4 +39,4 @@ src/
 - The database schema stays central in `platform/`.
 - No `utils/` or `types/` folders and no generic file names (`utils.ts`, `helpers.ts`). The fixed names `api.ts`, `reader.server.ts`, `service.server.ts` and `index.ts` are the exception.
 - `noImportCycles` is turned on if the pinned Biome version has it.
-- Where auth (better-auth instance, permission statement, middlewares, pages, email templates) and the app shell go is not settled here.
+- Where auth (better-auth instance, permission statement, middlewares, pages, email templates) and the app shell go is settled in ADR 0003.

@@ -10,15 +10,15 @@ _Avoid_: lint rules (too narrow)
 **Conduct rules**: conventions an agent or developer must follow that no tool enforces (architecture, naming, ways of working). Their single source of truth lives in the agents-home repo; the Starter points to it.
 _Avoid_: guidelines, best practices
 
-**Feature**: one business subject of a Derived app (posts, comments, patients). Only the data layer has a folder per feature (`data/<feature>/`); elsewhere a feature shows only in names: component file names, query keys, i18n keys.
-_Avoid_: module (used for any unit of code), domain
+**Feature**: one business subject of a Derived app (posts, comments, patients). Only the domain layer has a folder per feature (`domain/<feature>/`); elsewhere a feature shows only in names: component file names, query keys, i18n keys.
+_Avoid_: module (used for any unit of code), domain (`domain/` names the layer that holds every feature, not one feature)
 
-**Reader**: a server-only file of read-only database queries for one feature (`data/<feature>/reader.server.ts`). Any service or use case may call it.
+**Reader**: a server-only file of read-only database queries for one feature (`domain/<feature>/reader.server.ts`). Any service or use case may call it.
 
-**Service**: a server-only file of the writes on one feature (`data/<feature>/service.server.ts`). A service never calls another service.
+**Service**: a server-only file of the writes on one feature (`domain/<feature>/service.server.ts`). A service never calls another service.
 _Avoid_: repository
 
-**Use case**: a server-only operation that combines services of several features (`data/use-cases/<action>.server.ts`).
+**Use case**: a server-only operation that combines services of several features (`domain/use-cases/<action>.server.ts`).
 _Avoid_: workflow, action, command
 
 **Smart component**: a component that fetches the server data it displays itself, instead of receiving that data from its parent. The route that mounts it preloads that data.

@@ -1,6 +1,10 @@
-# Glossary
+# tanstack-starter
 
-**Starter**: this repository; a GitHub template repo from which every new app is created once, then diverges freely.
+The template repository every Derived app is created from.
+
+## Conventions
+
+**Starter**: the template repository (tanstack-starter) every Derived app is created from once, then diverges from freely.
 
 **Derived app**: an app created from the Starter. It does not receive the Starter's later changes automatically.
 
@@ -15,6 +19,8 @@ _Avoid_: hard rule
 
 **Style**: a convention about the form of code that aims for consistency, not conformance. It is shown by examples and neighbouring code; a deviation is pointed out, never treated as a defect.
 _Avoid_: code style (suggests formatting, which is a Tooled rule)
+
+## Architecture
 
 **Feature**: one business subject of a Derived app (posts, comments, patients). Only the domain layer has a folder per feature (`domain/<feature>/`); elsewhere a feature shows only in names: component file names, query keys, i18n keys.
 _Avoid_: module (used for any unit of code), domain (`domain/` names the layer that holds every feature, not one feature)
@@ -32,6 +38,8 @@ _Avoid_: fixture (suggests static data), seed (names the fake data for local dev
 
 **Smart component**: a component that fetches the server data it displays itself, instead of receiving that data from its parent. The route that mounts it preloads that data.
 _Avoid_: container component
+
+## Access
 
 **Permission**: the right to perform one action on one resource (for example, create a post). Code checks permissions, never roles.
 

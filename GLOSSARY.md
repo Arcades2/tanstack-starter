@@ -7,8 +7,14 @@
 **Tooled rules**: conventions enforced by configuration shipped in the Starter (formatter, linter, type checker, folder layout). They travel with each Derived app.
 _Avoid_: lint rules (too narrow)
 
-**Conduct rules**: conventions an agent or developer must follow that no tool enforces (architecture, naming, ways of working). Their single source of truth lives in the agents-home repo; the Starter points to it.
+**Conduct rules**: conventions an agent or developer must follow that no tool enforces, written in prose. Those about the Starter's stack (architecture, naming, form of the code) live in the Starter and travel with each Derived app. Those about ways of working common to all of one developer's repos live outside the Starter, which never points to them.
 _Avoid_: guidelines, best practices
+
+**Invariant**: a convention that must always hold, such as an architecture boundary, a security check or a data-integrity guarantee. Breaking one is a defect; it is made a Tooled rule whenever possible.
+_Avoid_: hard rule
+
+**Style**: a convention about the form of code that aims for consistency, not conformance. It is shown by examples and neighbouring code; a deviation is pointed out, never treated as a defect.
+_Avoid_: code style (suggests formatting, which is a Tooled rule)
 
 **Feature**: one business subject of a Derived app (posts, comments, patients). Only the domain layer has a folder per feature (`domain/<feature>/`); elsewhere a feature shows only in names: component file names, query keys, i18n keys.
 _Avoid_: module (used for any unit of code), domain (`domain/` names the layer that holds every feature, not one feature)

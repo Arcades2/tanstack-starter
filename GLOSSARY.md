@@ -21,6 +21,9 @@ _Avoid_: repository
 **Use case**: a server-only operation that combines services of several features (`domain/use-cases/<action>.server.ts`).
 _Avoid_: workflow, action, command
 
+**Factory**: a test helper that inserts one record of a feature with valid default values, lets the test override any of them, and returns it. Tests build their data with factories, never with the development seed.
+_Avoid_: fixture (suggests static data), seed (names the fake data for local development)
+
 **Smart component**: a component that fetches the server data it displays itself, instead of receiving that data from its parent. The route that mounts it preloads that data.
 _Avoid_: container component
 

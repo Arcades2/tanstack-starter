@@ -48,4 +48,16 @@ Used by `/wayfinder`. The **map** is a single issue with **child** issues as tic
     --jq '.[] | select(.state == "open" and .issue_dependencies_summary.blocked_by == 0 and (.assignees | length) == 0) | "#\(.number) \(.title) [\([.labels[].name] | join(","))]"'
   ```
 - **Claim**: `gh issue edit <n> --add-assignee @me`, the session's first write.
-- **Resolve**: `gh issue comment <n> --body "<answer>"`, then `gh issue close <n>`, then append a context pointer (gist + link) to the map's Decisions-so-far.
+- **Resolve**: `gh issue comment <n> --body "<answer>"`, then `gh issue close <n>`, then append a context pointer (gist + link) to the map's Decisions-so-far. Append it as the last line of Decisions so far; run as is from a scratch directory (replace `1` and the line):
+
+  ```sh
+  gh issue view 1 -R Arcades2/tanstack-starter --json body --jq .body > map.md
+  python3 - map.md "- [<ticket title>](<ticket url>): <gist>" <<'EOF'
+  import sys
+  path, line = sys.argv[1], sys.argv[2]
+  head, sep, tail = open(path).read().partition("\n## Not yet specified")
+  assert sep, "map has no Not yet specified section"
+  open(path, "w").write(head.rstrip("\n") + "\n" + line + "\n" + sep + tail)
+  EOF
+  gh issue edit 1 -R Arcades2/tanstack-starter --body-file map.md
+  ```

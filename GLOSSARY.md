@@ -20,6 +20,12 @@ _Avoid_: hard rule
 **Style**: a convention about the form of code that aims for consistency, not conformance. It is shown by examples and neighbouring code; a deviation is pointed out, never treated as a defect.
 _Avoid_: code style (suggests formatting, which is a Tooled rule)
 
+**Example**: the code shipped in the Starter only to show its conventions at work (a blog). It is removed when a Derived app is created.
+_Avoid_: demo, sample
+
+**Core**: everything in the Starter that a Derived app keeps once the Example is removed, what an app needs on day one even with no Feature (auth, app shell, error pages). The Core never depends on the Example.
+_Avoid_: base, foundation
+
 ## Architecture
 
 **Feature**: one business subject of a Derived app (posts, comments, patients). Only the domain layer has a folder per feature (`domain/<feature>/`); elsewhere a feature shows only in names: component file names, query keys, i18n keys.
@@ -45,3 +51,9 @@ _Avoid_: container component
 
 **Role**: a named set of permissions given to a user. The Starter ships two, user and admin; a role's content can change without touching the code that checks permissions.
 _Avoid_: group, profile
+
+## Blog
+
+**Post**: an article written by an author, either a draft or published. Only published posts are visible to the public.
+
+**Comment**: a short text a user writes on a published Post.
